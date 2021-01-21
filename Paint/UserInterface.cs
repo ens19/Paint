@@ -15,10 +15,25 @@ namespace Paint
 {
     public partial class UserInterface : Form
     {
+        /// <summary>
+        /// the graphics for the application
+        /// </summary>
         Graphics g;
+        /// <summary>
+        /// an integer that will provide the x coordinate
+        /// </summary>
         int x = -1;
+        /// <summary>
+        /// an interger that will provide the y coordinate
+        /// </summary>
         int y = -1;
+        /// <summary>
+        /// figures out if the user is drawing or not
+        /// </summary>
         bool moving = false;
+        /// <summary>
+        /// the pen used to draw 
+        /// </summary>
         Pen pen;
         public UserInterface()
         {
@@ -29,7 +44,11 @@ namespace Paint
             pen.StartCap = pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
             uxBlack.BorderStyle = BorderStyle.Fixed3D;
         }
-
+        /// <summary>
+        /// When a picture box is clicked upon, the pen's color will change
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             PictureBox p = (PictureBox)sender;
@@ -40,7 +59,11 @@ namespace Paint
             p.BorderStyle = BorderStyle.Fixed3D;
             pen.Color = p.BackColor;
         }
-
+        /// <summary>
+        /// Happens when the user first clicks to draw
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxPaintPanel_MouseDown(object sender, MouseEventArgs e)
         {
             moving = true;
@@ -49,7 +72,11 @@ namespace Paint
             uxPaintPanel.Cursor = Cursors.Cross;
             
         }
-
+        /// <summary>
+        /// When the user is drawing and using color 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxPaintPanel_MouseMove(object sender, MouseEventArgs e)
         {
             if(moving == true && x != -1 && y != -1)
@@ -60,7 +87,11 @@ namespace Paint
                 
             }
         }
-
+        /// <summary>
+        /// When the user stops drawing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uxPaintPanel_MouseUp(object sender, MouseEventArgs e)
         {
             moving = false;
